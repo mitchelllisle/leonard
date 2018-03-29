@@ -13,8 +13,7 @@ def distribution(data, column):
         .groupby(column)
         .agg({column : "count"})
         .rename(columns = {column : "Count"})
-        .reset_index()
-        .sort_values("Count", ascending = False)
+        .sort_values("Count", ascending = False).reset_index()
     )
 
     return dist
