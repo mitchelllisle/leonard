@@ -20,7 +20,7 @@ setup(name='leonard',
       license='MIT',
       install_requires=[
           'boto3',
-          'pandas'
+          'pandas',
           'numpy'
       ],
       python_requires='>=3',
