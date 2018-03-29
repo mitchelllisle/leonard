@@ -4,3 +4,4 @@ pandas
 numpy
 pytest
 pytest-cov
+codecov
