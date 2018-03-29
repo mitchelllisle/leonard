@@ -1,0 +1,6 @@
+twine
+boto3
+pandas
+numpy
+pytest
+pytest-cov
