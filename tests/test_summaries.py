@@ -1,5 +1,5 @@
 import pytest
-from leonard import summaries
+from leonard import distribution
 import numpy as np
 import pandas as pd
 import json
