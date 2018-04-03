@@ -10,13 +10,13 @@ import sys
 from setuptools import setup
 from setuptools.command.install import install
 
-setup(name='leonard',
+setup(name='lenny',
       version='0.1',
       description='A package for Exploratory Data Analysis',
-      url='http://github.com/mitchelllisle/leonard',
+      url='http://github.com/mitchelllisle/lenny',
       author='Mitchell Lisle',
       author_email='lislemitchell@gmail.com',
-      packages=['leonard'],
+      packages=['lenny'],
       license='MIT',
       install_requires=[
           'boto3',
