@@ -1,6 +1,6 @@
 import pytest
-from lenny import distribution
-from lenny import IQR
+from martha import distribution
+from martha import IQR
 import numpy as np
 import pandas as pd
 import json
