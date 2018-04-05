@@ -1,9 +1,9 @@
-![logo](https://user-images.githubusercontent.com/18128531/38247209-b6fb5b26-3787-11e8-8ce2-06c718ca732f.png)
+![martha](https://user-images.githubusercontent.com/18128531/38394881-8b12db68-3973-11e8-93f5-145701744ca9.png)
 
-[![CircleCI](https://circleci.com/gh/mitchelllisle/lenny.svg?style=svg)](https://circleci.com/gh/mitchelllisle/lenny)
-[![codecov](https://codecov.io/gh/mitchelllisle/leonard/branch/master/graph/badge.svg)](https://codecov.io/gh/mitchelllisle/leonard)
+[![CircleCI](https://circleci.com/gh/mitchelllisle/martha.svg?style=svg)](https://circleci.com/gh/mitchelllisle/martha)
+[![codecov](https://codecov.io/gh/mitchelllisle/martha/branch/master/graph/badge.svg)](https://codecov.io/gh/mitchelllisle/martha)
 
 ## Installation
 ```
-pip install git+https://github.com/mitchelllisle/lenny
+pip install git+https://github.com/mitchelllisle/martha
 ```
