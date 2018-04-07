@@ -4,11 +4,11 @@
 [![codecov](https://codecov.io/gh/mitchelllisle/martha/branch/master/graph/badge.svg)](https://codecov.io/gh/mitchelllisle/martha)
 
 ## Installation
-```
+```bash
 pip install git+https://github.com/mitchelllisle/martha
 ```
 ## Upgrade
-```
+```bash
 pip install --upgrade git+https://github.com/mitchelllisle/martha
 ```
 
@@ -20,19 +20,19 @@ Often times I find myself needing to get some information about a dataset before
 
 The functions found in summaries are:
 
-```
+```python
 martha.distribution(data, column)
 ```
 This functions works off categorical data. It will return the frequency and percentage of data points that fit to each distinct category.
 
 #### Example
 
-```
+```python
 martha.IQR(data, column)
 ```
 This function returms the Interquartile range of a dataset. Useful for understand where the middle 50% of observations lie.
 
-```
+```python
 martha.columnStats(data)
 ```
 This function will provide a summary of the types, counts, uniques and missing values in a column to asset the quality of dataset.
