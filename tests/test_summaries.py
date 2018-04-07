@@ -1,7 +1,7 @@
 import pytest
 from martha import distribution
 from martha import IQR
-from martha import columnTypes
+from martha import columnStats
 import numpy as np
 import pandas as pd
 import json
