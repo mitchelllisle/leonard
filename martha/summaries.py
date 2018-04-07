@@ -1,3 +1,5 @@
+import pandas as pd
+
 def distribution(data, column):
     '''
     Distribution of data based off Categories in column
@@ -42,3 +44,34 @@ def IQR(data, column):
     '''
     interquartileRange = data[column].quantile(0.75) - data[column].quantile(0.25)
     return interquartileRange
+
+
+def columnTypes(data):
+    '''
+    Column Type Summary (IQR)
+
+    Column Type Summary is used to provide some informatiom about the quality 
+    of each column in a dataset. This includes showing information such as:
+    dataType : The data type of each column
+    totalValues : The total number of values, not unique.
+    uniqueValues : The total number of unique values
+    missingValues : The total number of values that are NULL
+    missingPercent : (missingValues / totalValues * 100)
+    ------
+    PARAMS
+    ------
+    data : that contains the column you're interested in checking
+    '''
+    typeData = pd.DataFrame(data.dtypes)
+    typeData = (
+        typeData
+        .assign(totalValues = data.apply(lambda x: x.count(), axis = 0))
+        .assign(uniqueValues = data.apply(lambda x: x.nunique(), axis = 0))
+        .assign(missingValues = data.apply(lambda x: x.isnull().sum(), axis = 0))
+    )
+    
+    typeData = (
+        typeData
+        .assign(missingPercent = typeData.missingValues / typeData.totalValues * 100)
+    )
+    return typeData

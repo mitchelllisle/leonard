@@ -1,6 +1,7 @@
 import pytest
 from martha import distribution
 from martha import IQR
+from martha import columnTypes
 import numpy as np
 import pandas as pd
 import json
@@ -20,8 +21,12 @@ def test_IQR():
     result = IQR(values, "ranges")
     
     assert result == 25.5
-    
 
-# Run Functions
-test_distribution()
-test_IQR()
+
+
+def test_columnTypes():
+    data = pd.read_csv("data/marvelMovies.csv")
+    
+    result = columnTypes(data)
+    
+    assert len(result.columns) == 5
