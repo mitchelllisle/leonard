@@ -7,3 +7,33 @@
 ```
 pip install git+https://github.com/mitchelllisle/martha
 ```
+## Upgrade
+```
+pip install --upgrade git+https://github.com/mitchelllisle/martha
+```
+
+# What is Martha?
+Martha can be seen as a 'Quality of Life' python package that aims to assit in both an exploratory data analysis context as well as a productionised python project. There are a few main areas that Martha aims to assist with:
+
+### Summaries
+Often times I find myself needing to get some information about a dataset before diving into an analysis. Although there are some great existing tools within Pandas and other packages, I couldn't find something that quite tells me all the information I needed. Summaries are meant to bridge this gap.
+
+The functions found in summaries are:
+
+```
+martha.distribution(data, column)
+```
+This functions works off categorical data. It will return the frequency and percentage of data points that fit to each distinct category.
+
+#### Example
+
+```
+martha.IQR(data, column)
+```
+This function returms the Interquartile range of a dataset. Useful for understand where the middle 50% of observations lie.
+
+```
+martha.columnStats(data)
+```
+This function will provide a summary of the types, counts, uniques and missing values in a column to asset the quality of dataset.
+###
