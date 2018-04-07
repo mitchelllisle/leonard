@@ -46,11 +46,11 @@ def IQR(data, column):
     return interquartileRange
 
 
-def columnTypes(data):
+def columnStats(data):
     '''
-    Column Type Summary (IQR)
+    Column Stats Summary (IQR)
 
-    Column Type Summary is used to provide some informatiom about the quality 
+    Column Stats Summary is used to provide some informatiom about the quality 
     of each column in a dataset. This includes showing information such as:
     dataType : The data type of each column
     totalValues : The total number of values, not unique.

@@ -24,9 +24,9 @@ def test_IQR():
 
 
 
-def test_columnTypes():
+def test_columnStats():
     data = pd.read_csv("data/marvelMovies.csv")
     
-    result = columnTypes(data)
+    result = columnStats(data)
     
     assert len(result.columns) == 5
