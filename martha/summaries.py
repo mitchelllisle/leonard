@@ -62,7 +62,7 @@ def columnStats(data):
     ------
     data : that contains the column you're interested in checking
     '''
-    typeData = pd.DataFrame(data.dtypes)
+    typeData = pd.DataFrame(data.dtypes, columns = ['dataTypes'])
     typeData = (
         typeData
         .assign(totalValues = data.apply(lambda x: x.count(), axis = 0))
