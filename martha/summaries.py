@@ -12,12 +12,8 @@ def distribution(data, column):
     ------
     data : that contains the column you're interested in checking
     column : the column to run distribution checks
-    
-    --------
-    EXAMPLES
-    --------
-    Coming soon......
     '''
+    totalValues = data[column].count()
     dist = (
         data
         .groupby(column)
@@ -25,7 +21,8 @@ def distribution(data, column):
         .rename(columns = {column : "Count"})
         .sort_values("Count", ascending = False).reset_index()
     )
-
+    
+    dist = dist.assign(Percent = round(dist.Count / totalValues * 100, 2))
     return dist
 
 def IQR(data, column):
