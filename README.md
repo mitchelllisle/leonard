@@ -2,8 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/mitchelllisle/martha.svg?style=svg)](https://circleci.com/gh/mitchelllisle/martha)
 [![codecov](https://codecov.io/gh/mitchelllisle/martha/branch/master/graph/badge.svg)](https://codecov.io/gh/mitchelllisle/martha)
-[![GitHub release](https://img.shields.io/github/release/mitchelllisle/martha.svg)](https://GitHub.com/mitchelllisle/martha/releases/)
-![GitHub issues](https://img.shields.io/github/issues/mitchelllisle/martha.svg)
 ![Status](https://img.shields.io/badge/status-alpha-red.svg)
 
 ## Installation
