@@ -59,6 +59,7 @@ def columnStats(data):
     ------
     data : that contains the column you're interested in checking
     '''
+    totalRows = len(data)
     typeData = pd.DataFrame(data.dtypes, columns = ['dataTypes'])
     typeData = (
         typeData
@@ -69,7 +70,7 @@ def columnStats(data):
     
     typeData = (
         typeData
-        .assign(missingPercent = round(typeData.missingValues / typeData.totalValues * 100, 2))
-        .assign(uniquePercent = round(typeData.uniqueValues / typeData.totalValues * 100, 2))
+        .assign(missingPercent = round(typeData.missingValues / rows * 100, 2))
+        .assign(uniquePercent = round(typeData.uniqueValues / totalRows * 100, 2))
     )
     return typeData
