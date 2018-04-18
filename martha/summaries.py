@@ -52,7 +52,7 @@ def countColumn(data):
 def columnStats(data):
     '''
     Column Stats Summary
-    Column Stats Summary is used to provide some informatiom about the quality 
+    Column Stats Summary is used to provide some informatiom about the quality
     of each column in a dataset. This includes showing information such as:
     dataType : The data type of each column
     totalValues : The total number of values, not unique.
@@ -72,13 +72,13 @@ def columnStats(data):
         .assign(uniqueValues = data.apply(lambda x: x.nunique(), axis = 0))
         .assign(missingValues = data.apply(lambda x: x.isnull().sum(), axis = 0))
     )
-    
+
     typeData = (
         typeData
         .assign(missingPercent = round(typeData.missingValues / totalRows * 100, 2))
         .assign(uniquePercent = round(typeData.uniqueValues / totalRows * 100, 2))
     )
-    
+
     typeData = (
         typeData
         .assign(topRecurringValues = data.apply(lambda x: countColumn(x), axis = 0))
@@ -104,11 +104,11 @@ def summary(data):
     totalInts = pd.Series(totalTypes[0], name = "Numeric", index = ['metric'])
     totalStrings = pd.Series(totalTypes[1], name = "String", index = ['metric'])
     totalDates = pd.Series(totalTypes[2], name = "Date", index = ['metric'])
-    
+
     totalSize = pd.Series(size(sys.getsizeof(data)), name = "Total Size in Memory", index = ["metric"])
     totalMissing = data.apply(lambda x: x.isnull().sum(), axis = 0).sum()
-    totalMissingPercent = pd.Series(str(int(totalMissing / totalRows * 100)) + "%", name = "Total Missing %", index = ['metric'])
-    
+    totalMissingPercent = pd.Series(str(int(totalMissing / (totalRows * totalColumns) * 100)) + "%", name = "Total Missing %", index = ['metric'])
+
     allStats = pd.DataFrame()
     stats = [totalRows, totalColumns, totalInts, totalStrings, totalDates, totalSize, totalMissingPercent]
 
