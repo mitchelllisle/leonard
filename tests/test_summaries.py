@@ -29,4 +29,4 @@ def test_columnStats():
     
     result = columnStats(data)
     
-    assert len(result.columns) == 6
+    assert len(result.columns) == 7
