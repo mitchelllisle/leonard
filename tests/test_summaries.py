@@ -2,6 +2,7 @@ import pytest
 from martha import distribution
 from martha import IQR
 from martha import columnStats
+from martha import summary
 import numpy as np
 import pandas as pd
 import json
@@ -30,3 +31,11 @@ def test_columnStats():
     result = columnStats(data)
     
     assert len(result.columns) == 7
+    
+    
+def test_summary():
+    data = pd.read_csv("data/marvelMovies.csv")
+    
+    result = summary(data)
+    
+    assert len(result) == 7
