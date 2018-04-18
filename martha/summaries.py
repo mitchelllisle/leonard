@@ -3,10 +3,10 @@ import pandas as pd
 def distribution(data, column):
     '''
     Distribution of data based off Categories in column
-    
-    This functions works off categorical data. It will return the frequency and percentage 
+
+    This functions works off categorical data. It will return the frequency and percentage
     of data points that fit to each distinct category.
-    
+
     ------
     PARAMS
     ------
@@ -21,7 +21,7 @@ def distribution(data, column):
         .rename(columns = {column : "Count"})
         .sort_values("Count", ascending = False).reset_index()
     )
-    
+
     dist = dist.assign(Percent = round(dist.Count / totalValues * 100, 2))
     return dist
 
@@ -37,16 +37,19 @@ def IQR(data, column):
     ------
     data : that contains the column you're interested in checking
     column : the column to run distribution checks
-    
+
     '''
     interquartileRange = data[column].quantile(0.75) - data[column].quantile(0.25)
     return interquartileRange
 
 
+def countColumn(data):
+    topValue = pd.Series(data.value_counts(sort = True, ascending = False))
+    return topValue.index[0]
+
 def columnStats(data):
     '''
     Column Stats Summary
-
     Column Stats Summary is used to provide some informatiom about the quality 
     of each column in a dataset. This includes showing information such as:
     dataType : The data type of each column
@@ -71,6 +74,11 @@ def columnStats(data):
     typeData = (
         typeData
         .assign(missingPercent = round(typeData.missingValues / totalRows * 100, 2))
-        .assign(uniquePercent = round((totalRows / typeData.uniqueValues) / totalRows * 100, 2))
+        .assign(uniquePercent = round(typeData.uniqueValues / totalRows * 100, 2))
+    )
+    
+    typeData = (
+        typeData
+        .assign(topRecurringValues = data.apply(lambda x: countColumn(x), axis = 0))
     )
     return typeData
