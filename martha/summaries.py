@@ -70,7 +70,7 @@ def columnStats(data):
     
     typeData = (
         typeData
-        .assign(missingPercent = round(typeData.missingValues / rows * 100, 2))
+        .assign(missingPercent = round(typeData.missingValues / totalRows * 100, 2))
         .assign(uniquePercent = round(typeData.uniqueValues / totalRows * 100, 2))
     )
     return typeData
