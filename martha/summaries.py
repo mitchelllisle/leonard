@@ -1,4 +1,6 @@
 import pandas as pd
+import sys
+from hurry.filesize import size
 
 def distribution(data, column):
     '''
@@ -82,3 +84,34 @@ def columnStats(data):
         .assign(topRecurringValues = data.apply(lambda x: countColumn(x), axis = 0))
     )
     return typeData
+
+
+def countTypes(data):
+    dataTypes = ['int32', 'int64', 'object', 'datetime64[ns]']
+    data = pd.DataFrame(data.dtypes, columns = ['type'])
+    int32s = len(data[data['type'] == dataTypes[0]])
+    int64s = len(data[data['type'] == dataTypes[1]])
+    ints = int32s + int64s
+    objects = len(data[data['type'] == dataTypes[2]])
+    datetimes = len(data[data['type'] == dataTypes[3]])
+    return ints, objects, datetimes
+
+def summary(data):
+    totalRows = pd.Series(len(data), name = "Total Number of Rows", index = ["metric"])
+    totalColumns = pd.Series(len(data.columns), name = 'Total Number of Columns', index = ["metric"])
+    totalTypes = countTypes(data)
+
+    totalInts = pd.Series(totalTypes[0], name = "Numeric", index = ['metric'])
+    totalStrings = pd.Series(totalTypes[1], name = "String", index = ['metric'])
+    totalDates = pd.Series(totalTypes[2], name = "Date", index = ['metric'])
+    
+    totalSize = pd.Series(size(sys.getsizeof(data)), name = "Total Size in Memory", index = ["metric"])
+    totalMissing = data.apply(lambda x: x.isnull().sum(), axis = 0).sum()
+    totalMissingPercent = pd.Series(str(int(totalMissing / totalRows * 100)) + "%", name = "Total Missing %", index = ['metric'])
+    
+    allStats = pd.DataFrame()
+    stats = [totalRows, totalColumns, totalInts, totalStrings, totalDates, totalSize, totalMissingPercent]
+
+    for stat in stats:
+        allStats = allStats.append(stat)
+    return allStats
