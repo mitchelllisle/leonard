@@ -5,3 +5,4 @@ numpy
 pytest
 pytest-cov
 codecov
+hurry.filesize
