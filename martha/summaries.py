@@ -45,7 +45,7 @@ def IQR(data, column):
 
 def columnStats(data):
     '''
-    Column Stats Summary (IQR)
+    Column Stats Summary
 
     Column Stats Summary is used to provide some informatiom about the quality 
     of each column in a dataset. This includes showing information such as:
