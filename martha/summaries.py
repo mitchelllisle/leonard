@@ -46,8 +46,11 @@ def IQR(data, column):
 
 
 def countColumn(data):
-    topValue = pd.Series(data.value_counts(sort = True, ascending = False))
-    return topValue.index[0]
+    try:
+        topValue = pd.Series(data.value_counts(sort = True, ascending = False))
+        return topValue.index[0]
+    except Exception as err:
+        return "NA"
 
 def columnStats(data):
     '''
