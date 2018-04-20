@@ -46,11 +46,11 @@ def IQR(data, column):
 
 
 def countColumn(data):
-    if all(row is None for row in data):
-        return "NA"
-    else :
+    try:
         topValue = pd.Series(data.value_counts(sort = True, ascending = False))
         return topValue.index[0]
+    except Exception as err:
+        return "NA"
 
 def columnStats(data):
     '''
