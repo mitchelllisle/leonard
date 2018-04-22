@@ -21,7 +21,8 @@ setup(name='martha',
       install_requires=[
           'boto3',
           'pandas',
-          'numpy'
+          'numpy',
+          'hurry.filesize'
       ],
       python_requires='>=3',
       zip_safe=False)
