@@ -130,5 +130,5 @@ def showNullColumns(data, threshold = 0):
     data : that contains the column you're interested in checking
     threshold : Return all columsn with null counts greater than this value. Default is 0.
     '''
-    nullColumns = data.isnull().sum()[data.isnull().sum() > threshold]
+    nullColumns = pd.DataFrame(data.isnull().sum()[data.isnull().sum() > threshold])
     return nullColumns
