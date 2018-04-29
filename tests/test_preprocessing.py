@@ -4,6 +4,7 @@ from martha import normalise
 import numpy as np
 import pandas as pd
 import json
+from sklearn.preprocessing import LabelEncoder
 
 def test_negabs():
     data = pd.read_csv("data/marvelMovies.csv")
@@ -18,3 +19,8 @@ def test_normalise():
     data = pd.read_csv("data/marvelMovies.csv")
     result = data.assign(score = normalise(data['ProductionBudget']))
     assert 'score' in result.columns
+
+def test_labelEncoder():
+    data = pd.read_csv("data/fifaAbilities.csv")
+    result = data.assign(preferred_foot_encoded = labelEncoder(data, "preferred_foot"))
+    assert result.preferred_foot_encoded.dtype == 'int64'
