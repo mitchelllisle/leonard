@@ -1,6 +1,6 @@
 import pandas as pd
 import sys
-from hurry.filesize import size
+import hurry.filesize
 
 def distribution(data, column):
     '''
@@ -108,7 +108,7 @@ def summary(data):
     totalStrings = pd.Series(totalTypes[1], name = "String", index = ['metric'])
     totalDates = pd.Series(totalTypes[2], name = "Date", index = ['metric'])
 
-    totalSize = pd.Series(size(sys.getsizeof(data)), name = "Total Size in Memory", index = ["metric"])
+    totalSize = pd.Series(hurry.filesize.size(sys.getsizeof(data)), name = "Total Size in Memory", index = ["metric"])
     totalMissing = data.apply(lambda x: x.isnull().sum(), axis = 0).sum()
     totalMissingPercent = pd.Series(str(int(totalMissing / (totalRows * totalColumns) * 100)) + "%", name = "Total Missing %", index = ['metric'])
 
@@ -118,3 +118,17 @@ def summary(data):
     for stat in stats:
         allStats = allStats.append(stat)
     return allStats
+
+def showNullColumns(data, threshold = 0):
+    '''
+    showNullColumns
+    This will return all the columns in a dataset that have nulls passed
+    a given threshold.
+    ------
+    PARAMS
+    ------
+    data : that contains the column you're interested in checking
+    threshold : Return all columsn with null counts greater than this value. Default is 0.
+    '''
+    nullColumns = data.isnull().sum()[data.isnull().sum() > threshold]
+    return nullColumns
