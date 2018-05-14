@@ -28,5 +28,5 @@ def test_labelEncoder():
 
 def test_cleanUpString():
     data = "test, \n"
-    result = cleanUpString(data, strip_chars = [','])
-    assert result == 'test'
+    result = cleanUpString(data, strip_chars = [','], replace_extras = {"t" : "--"})
+    assert result == '--es--'
