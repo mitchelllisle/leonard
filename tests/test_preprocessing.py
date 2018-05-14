@@ -2,7 +2,7 @@ import pytest
 from martha import negabs
 from martha import normalise
 from martha import labelEncoder
-from martha import cleanUp
+from martha import cleanUpString
 import numpy as np
 import pandas as pd
 import json
