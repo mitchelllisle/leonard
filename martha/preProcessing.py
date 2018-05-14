@@ -1,5 +1,9 @@
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
+import warnings
+try:
+    from sklearn.preprocessing import LabelEncoder
+except ImportError:
+    warnings.warn("LabelEncoder function won't work as you seem to be missing sklearn")
 
 def negabs(x):
     '''
@@ -19,6 +23,9 @@ def negabs(x):
     '''
     return x * -1
 
+def medianFrequency(value, frequency):
+    computedMedian = np.median(value.repeat(frequency))
+    return computedMedian
 
 def normalise(data):
     '''

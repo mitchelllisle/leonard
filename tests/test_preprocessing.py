@@ -30,3 +30,10 @@ def test_cleanUpString():
     data = "test, \n"
     result = cleanUpString(data, strip_chars = [','], replace_extras = {"t" : "--"})
     assert result == '--es--'
+
+def test_medianFrequency():
+    data = {"values" : [1,2,4], "repeats" : [4,4,2]}
+    values = pd.Series(data['values'])
+    repeats = pd.Series(data['repeats'])
+    computedMedian = medianFrequency(values, repeats)
+    assert computedMedian == 2
