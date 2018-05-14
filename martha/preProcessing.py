@@ -64,3 +64,27 @@ def labelEncoder(data, column):
     encodedLabels = LabelEncoder()
     encodedLabels = encodedLabels.fit_transform(values)
     return encodedLabels
+
+
+def clean_up(text, strip_chars=[], replace_extras={}):
+    # Credit for this code goes to: https://codereview.stackexchange.com/users/114734/double-j
+    # Taken from this URL: https://codereview.stackexchange.com/questions/139549/python-string-clean-up-function-with-optional-args
+    clean_up_items = {'\n': ' ', '\r': ' ', '\t': ' ', '  ': ' '}
+    clean_up_items.update(replace_extras)
+
+    text = text.strip()
+
+    change_made = True
+    while change_made:
+        text_old = text
+        for x in strip_chars:
+            while text.startswith(x) or text.endswith(x):
+                text = text.strip(x).strip()
+
+        for key, val in clean_up_items.items():
+            while key in text:
+                text = text.replace(key, val)
+
+        change_made = False if text_old == text else True
+
+    return text.strip()
