@@ -66,7 +66,7 @@ def labelEncoder(data, column):
     return encodedLabels
 
 
-def clean_up(text, strip_chars=[], replace_extras={}):
+def cleanUpString(text, strip_chars=[], replace_extras={}):
     # Credit for this code goes to: https://codereview.stackexchange.com/users/114734/double-j
     # Taken from this URL: https://codereview.stackexchange.com/questions/139549/python-string-clean-up-function-with-optional-args
     clean_up_items = {'\n': ' ', '\r': ' ', '\t': ' ', '  ': ' '}

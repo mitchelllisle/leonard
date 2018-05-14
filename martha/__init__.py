@@ -6,3 +6,4 @@ from .summaries import showNullColumns
 from .preProcessing import negabs
 from .preProcessing import normalise
 from .preProcessing import labelEncoder
+from .preProcessing import cleanUpString
