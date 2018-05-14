@@ -11,7 +11,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 setup(name='martha',
-      version='0.1',
+      version='SpeedySole',
       description='A package for Exploratory Data Analysis',
       url='http://github.com/mitchelllisle/martha',
       author='Mitchell Lisle',
