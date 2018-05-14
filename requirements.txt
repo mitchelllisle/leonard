@@ -6,3 +6,5 @@ pytest
 pytest-cov
 codecov
 hurry.filesize
+sklearn
+scipy
