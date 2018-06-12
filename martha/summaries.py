@@ -85,6 +85,9 @@ def columnStats(data):
 
 
 def countTypes(data):
+    '''
+    Use as part of summary()
+    '''
     dataTypes = ['int32', 'int64', 'object', 'datetime64[ns]']
     data = pd.DataFrame(data.dtypes, columns = ['type'])
     int32s = len(data[data['type'] == dataTypes[0]])
@@ -95,6 +98,22 @@ def countTypes(data):
     return ints, objects, datetimes
 
 def summary(data):
+    '''
+    Data Stats Summary
+    Data Stats Summary is used to provide some informatiom about the quality
+    of a dataset. This includes showing information such as:
+     : The data type of each column
+    totalRows : The total number of rows
+    totalColumns : The total number of columns
+    totalTypes : The total number of various data types
+    totalSize : the size in MB, KB etc of the dataset
+    totalMissing : Total number of missing values in all columns
+    totalMissingPercent : Total number of missing values in all columns percentage
+    ------
+    PARAMS
+    ------
+    data : The dataset you want to summarize
+    '''
     totalRows = pd.Series(len(data), name = "Total Number of Rows", index = ["metric"])
     totalColumns = pd.Series(len(data.columns), name = 'Total Number of Columns', index = ["metric"])
     totalTypes = countTypes(data)
