@@ -1,8 +1,9 @@
 import pandas as pd
 import sys
 import hurry.filesize
+from collections import Counter
 
-def distribution(data, column):
+def distribution(column):
     '''
     Distribution of data based off Categories in column
 
@@ -15,19 +16,12 @@ def distribution(data, column):
     data : that contains the column you're interested in checking
     column : the column to run distribution checks
     '''
-    totalValues = data[column].count()
-    dist = (
-        data
-        .groupby(column)
-        .agg({column : "count"})
-        .rename(columns = {column : "Count"})
-        .sort_values("Count", ascending = False).reset_index()
-    )
-
-    dist = dist.assign(Percent = round(dist.Count / totalValues * 100, 2))
+    totalValues = column.count()
+    dist = pd.DataFrame(pd.Series(Counter(column), name = "occurences"))
+    dist = dist.assign(percent = round(dist.occurences / totalValues * 100, 2))
     return dist
 
-def IQR(data, column):
+def IQR(column):
     '''
     Interquartile Range (IQR)
 
@@ -41,7 +35,7 @@ def IQR(data, column):
     column : the column to run distribution checks
 
     '''
-    interquartileRange = data[column].quantile(0.75) - data[column].quantile(0.25)
+    interquartileRange = column.quantile(0.75) - column.quantile(0.25)
     return interquartileRange
 
 
