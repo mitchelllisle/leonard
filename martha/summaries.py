@@ -19,6 +19,7 @@ def distribution(column):
     totalValues = column.count()
     dist = pd.DataFrame(pd.Series(Counter(column), name = "occurences"))
     dist = dist.assign(percent = round(dist.occurences / totalValues * 100, 2))
+    dist = dist.sort_values("percent", ascending = False)
     return dist
 
 def IQR(column):
