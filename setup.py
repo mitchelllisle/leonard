@@ -11,7 +11,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 setup(name='martha',
-      version='BadBeaver',
+      version='PortlyPlatypus',
       description='A package for Exploratory Data Analysis',
       url='http://github.com/mitchelllisle/martha',
       author='Mitchell Lisle',
