@@ -8,3 +8,4 @@ codecov
 hurry.filesize
 sklearn
 scipy
+altair

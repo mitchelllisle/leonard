@@ -153,23 +153,23 @@ def checkMissingDates(data, freq = "D", strftime = '%Y-%m-%d', returnType = "viz
     Check for Missing Dates
 
     This function is used to return either a list of missing dates from a pd.Series or
-    chart the missing dates. 
-    
+    chart the missing dates.
+
     Attributes
     ----------
-    data: a Pandas series that contains dates. Dates will be parsed using pd.to_datetime() 
+    data: a Pandas series that contains dates. Dates will be parsed using pd.to_datetime()
     with a default strftime of '%Y-%m-%d'. Use strftime arg to alter date format
-    freq: The frequency to 
+    freq: The frequency to
     """
     try:
-        assert type(stockData.date) == pd.Series
+        assert type(data) == pd.Series
 
         datesToCheck = pd.to_datetime(list(data))
 
         minDate = datesToCheck.min().strftime("%Y-%m-%d")
         maxDate = datesToCheck.max().strftime("%Y-%m-%d")
         computedRange = pd.date_range(minDate, maxDate, freq = freq)
-        
+
         allChecks = []
         for date in computedRange:
             currentDateResult = date in datesToCheck
@@ -180,23 +180,23 @@ def checkMissingDates(data, freq = "D", strftime = '%Y-%m-%d', returnType = "viz
         missing = list(allChecks.exists).count(False)
         present = list(allChecks.exists).count(True)
         total = present + missing
-        
+
         allChecks['date'] = allChecks.date.map(lambda x: pd.to_datetime(x).strftime('%Y-%m-%d'))
 
-        calculatedTitle = "Total Dates: " + str(total) + ", Missing Dates: " + str(missing) + ", (" + str(int((missing / total) * 100)) + "%)" 
+        calculatedTitle = "Total Dates: " + str(total) + ", Missing Dates: " + str(missing) + ", (" + str(int((missing / total) * 100)) + "%)"
 
         scale = alt.Scale(domain=['true', 'false'],
                           range=['#B8E986', '#F15545'])
-    
+
         if returnType == 'viz':
             results = alt.Chart(
-                allChecks, 
+                allChecks,
                 title = alt.TitleParams(calculatedTitle, anchor = "start", offset = 20, orient = "top"),
                 width = 800,
                 height = 400,
                 autosize = alt.AutoSizeParams(
-                    contains="content", 
-                    resize=True, 
+                    contains="content",
+                    resize=True,
                     type="fit")
                 ).mark_bar().encode(
                     x = alt.X("date", title = "Date", type = "temporal"),
@@ -204,10 +204,10 @@ def checkMissingDates(data, freq = "D", strftime = '%Y-%m-%d', returnType = "viz
                     color = alt.Color("exists", scale = scale),
                     tooltip = [alt.Tooltip("date", format = "%Y-%m-%d", type = "temporal"), "exists", "count()"]
             )
-        
-        elif returnType == "missing": 
+
+        elif returnType == "missing":
             results = allChecks[allChecks['exists'] == False]
-        elif returnType == "all": 
+        elif returnType == "all":
             results = allChecks
         return results
     except Exception as E:
