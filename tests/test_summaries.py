@@ -4,6 +4,8 @@ from martha import IQR
 from martha import columnStats
 from martha import summary
 from martha import showNullColumns
+from martha import checkMissingDates
+import altair as alt
 import numpy as np
 import pandas as pd
 import json
@@ -45,3 +47,15 @@ def test_showNullColumns():
     result = showNullColumns(data)
 
     assert len(result) == 1
+
+def test_checkMissingDates_1():
+    dates = pd.Series(['2017-01-01', '2017-01-02', '2017-01-04', '2017-01-06'], name = "dates")
+    missingDates = checkMissingDates(dates, returnType = 'missing')
+    allDates = checkMissingDates(dates, returnType = 'all')
+    assert len(missingDates == 2)
+    assert len(allDates == 6)
+
+def test_checkMissingDates_2():
+    dates = pd.Series(['2017-01-01', '2017-01-02', '2017-01-04', '2017-01-06'], name = "dates")
+    missingDates = checkMissingDates(dates, returnType = 'viz')
+    assert type(missingDates) == alt.Chart
