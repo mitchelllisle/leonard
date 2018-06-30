@@ -4,7 +4,6 @@ from martha import IQR
 from martha import columnStats
 from martha import summary
 from martha import showNullColumns
-from martha import checkMissingDates
 import altair as alt
 import numpy as np
 import pandas as pd
