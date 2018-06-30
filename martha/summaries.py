@@ -2,6 +2,7 @@ import pandas as pd
 import sys
 import hurry.filesize
 from collections import Counter
+import altair as alt
 
 def distribution(column):
     '''
@@ -148,7 +149,7 @@ def showNullColumns(data, threshold = 0):
     return nullColumns
 
 
-def checkMissingDates(data, freq = "D", strftime = '%Y-%m-%d', returnType = "viz"):
+def checkMissingDates(data, freq = "D", format = '%Y-%m-%d', returnType = "viz"):
     """
     Check for Missing Dates
 
@@ -157,9 +158,44 @@ def checkMissingDates(data, freq = "D", strftime = '%Y-%m-%d', returnType = "viz
 
     Attributes
     ----------
-    data: a Pandas series that contains dates. Dates will be parsed using pd.to_datetime()
+    data : pd.Series, default None
+    A Pandas series that contains dates. Dates will be parsed using pd.to_datetime()
     with a default strftime of '%Y-%m-%d'. Use strftime arg to alter date format
-    freq: The frequency to
+    freq: object, default '%Y-%m-%d'
+    The expected frequency of the dates. Valid options are:
+        B: business day frequency
+        C: custom business day frequency
+        D: calendar day frequency
+        W: weekly frequency
+        M: month end frequency
+        SM: semi-month end frequency (15th and end of month)
+        BM: business month end frequency
+        CBM: custom business month end frequency
+        MS: month start frequency
+        SMS: semi-month start frequency (1st and 15th)
+        BMS: business month start frequency
+        CBMS: custom business month start frequency
+        Q: quarter end frequency
+        BQ: business quarter end frequency
+        QS: quarter start frequency
+        BQS: business quarter start frequency
+        A, Y: year end frequency
+        BA, BY: business year end frequency
+        AS, YS: year start frequency
+        BAS, BYS: business year start frequency
+        BH: business hour frequency
+        H: hourly frequency
+        T, min: minutely frequency
+        S: secondly frequency
+        L, ms: milliseconds
+        U, us: microseconds
+        N: nanoseconds
+    format:
+    returnType: object, default viz
+    One of:
+        missing: Return the missing dates
+        all: Return missing and present dates
+        viz: Return a vizualisation
     """
     try:
         assert type(data) == pd.Series
@@ -211,4 +247,4 @@ def checkMissingDates(data, freq = "D", strftime = '%Y-%m-%d', returnType = "viz
             results = allChecks
         return results
     except Exception as E:
-        return E
+        raise E
