@@ -21,4 +21,4 @@ def test_checkMissingDates_2():
 def test_numericColumns():
     data  = pd.read_csv("data/fifaAbilities.csv")
     charts = numericHistograms(data)
-    assert type(datesFound) == alt.Chart
+    assert type(charts) == alt.Chart
