@@ -48,7 +48,14 @@ def test_showNullColumns():
 
     assert len(result) == 1
 
-def test_checkMissingDates():
+def test_checkMissingDates_1():
     dates = pd.Series(['2017-01-01', '2017-01-02', '2017-01-04', '2017-01-06'], name = "dates")
     missingDates = checkMissingDates(dates, returnType = 'missing')
+    allDates = checkMissingDates(dates, returnType = 'all')
     assert len(missingDates == 2)
+    assert len(allDates == 6)
+
+def test_checkMissingDates_2():
+    dates = pd.Series(['2017-01-01', '2017-01-02', '2017-01-04', '2017-01-06'], name = "dates")
+    missingDates = checkMissingDates(dates, returnType = 'viz')
+    assert type(missingDates) == alt.Chart
