@@ -1,7 +1,11 @@
 import pandas as pd
 import numpy as np
 import sys
-import altair as alt
+try:
+    import altair as alt
+except ImportError:
+    warnings.warn("Altair is not installed. Chart functions won't work")
+
 
 def numericHistograms(data):
     """

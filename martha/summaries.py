@@ -2,7 +2,6 @@ import pandas as pd
 import sys
 import hurry.filesize
 from collections import Counter
-import altair as alt
 
 def distribution(column):
     '''
