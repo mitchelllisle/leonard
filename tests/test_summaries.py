@@ -4,7 +4,10 @@ from martha import IQR
 from martha import columnStats
 from martha import summary
 from martha import showNullColumns
-import altair as alt
+try:
+    import altair as alt
+except ImportError:
+    warnings.warn("Altair is not installed. Chart functions won't work")
 import numpy as np
 import pandas as pd
 import json

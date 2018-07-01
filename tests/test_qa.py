@@ -1,7 +1,10 @@
 import pytest
 from martha import missingDates
 from martha import numericHistograms
-import altair as alt
+try:
+    import altair as alt
+except ImportError:
+    warnings.warn("Altair is not installed. Chart functions won't work")
 import numpy as np
 import pandas as pd
 import json
