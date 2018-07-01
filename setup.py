@@ -22,7 +22,8 @@ setup(name='martha',
           'boto3',
           'pandas',
           'numpy',
-          'hurry.filesize'
+          'hurry.filesize',
+          'altair'
       ],
       python_requires='>=3',
       zip_safe=False)
