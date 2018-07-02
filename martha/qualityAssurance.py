@@ -106,6 +106,9 @@ def missingDates(data, freq = "D", format = '%Y-%m-%d', returnType = "viz"):
                           range=['#B8E986', '#F15545'])
 
         if returnType == 'viz':
+            barSize = (1000 / len(computedRange)) - 5
+            padding = (barSize / 2) + 1
+
             results = alt.Chart(
                 allChecks,
                 title = alt.TitleParams(calculatedTitle, anchor = "start", offset = 20, orient = "top"),
@@ -115,8 +118,8 @@ def missingDates(data, freq = "D", format = '%Y-%m-%d', returnType = "viz"):
                     contains="content",
                     resize=True,
                     type="fit")
-                ).mark_bar().encode(
-                    x = alt.X("date", title = "Date", type = "temporal"),
+                ).mark_bar(size = barSize).encode(
+                    x = alt.X("date", title = "Date", type = "temporal", scale=alt.Scale(padding = padding)),
                     y = "count()",
                     color = alt.Color("exists", scale = scale),
                     tooltip = [alt.Tooltip("date", format = "%Y-%m-%d", type = "temporal"), "exists", "count()"]
