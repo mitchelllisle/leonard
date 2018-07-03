@@ -14,10 +14,10 @@ pip install --upgrade git+https://github.com/mitchelllisle/martha
 ```
 
 # What is Martha?
-Martha can be seen as a 'Quality of Life' python package that aims to assit in both an exploratory data analysis context as well as a productionised python project. There are a few main areas that Martha aims to assist with:
+Martha is a python package that aims to assit in both an exploratory data analysis context as well as a productionised python project. There are a few main areas that Martha aims to assist with:
 
 ## Summaries
-Often times I find myself needing to get some information about a dataset before diving into an analysis. Although there are some great existing tools within Pandas and other packages, I couldn't find something that quite tells me all the information I needed. Summaries are meant to bridge this gap.
+Often times I find myself needing to get some information about a dataset before diving into an analysis. Although there are some great existing tools within Pandas and other packages, I couldn't find something that quite tells me all the information I needed. Summaries are meant to help bridge this gap.
 
 The functions found in summaries are:
 
@@ -25,10 +25,28 @@ The functions found in summaries are:
 ```python
 martha.distribution(data, column)
 ```
-This functions works off categorical data. It will return the frequency and percentage of data points that fit to each distinct category.
+This functions works off categorical datam although you can use it on any type. It will return the frequency and percentage of data points that fit to each distinct category. Useful for understanding if your data is distributed across multiple values or if there is some skew to the data.
 
 **Example**
+Suppose you have a dataset that looks like the following:
 
+| Movie                   	| Distributor          	| BoxOffice    	| Budget      	|
+|-------------------------	|----------------------	|--------------	|-------------	|
+| Raiders of the Lost Ark 	| Lucasfilm            	| $225,686,079 	| $20,000,000 	|
+| Back to the Future      	| Amblin Entertainment 	| $212,259,762 	| $19,000,000 	|
+| Star Wars               	| Lucasfilm            	| $460,998,007 	| $11,000,000 	|
+
+Running 
+```python
+martha.distribution(movies['Movie'])
+```
+Would give you:
+```
+                           occurences	percent
+Raiders of the Lost Ark	   1	2.10    %33.33
+Back to the Future         1	2.10    %33.33
+Star Wars: A New Hope      1	2.10	  %33.33
+```
 
 ### Interquartile Range
 ```python
