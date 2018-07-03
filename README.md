@@ -48,11 +48,6 @@ Back to the Future         1	2.10    %33.33
 Star Wars: A New Hope      1	2.10	  %33.33
 ```
 
-### Interquartile Range
-```python
-martha.IQR(data, column)
-```
-This function returms the Interquartile range of a dataset. Useful for understand where the middle 50% of observations lie.
 
 ### Column Stats
 ```python
@@ -61,6 +56,11 @@ martha.columnStats(data)
 This function will provide a summary of the types, counts, uniques and missing values in a column to asset the quality of dataset.
 
 
-## Transformations
+## Quality Assurance
 
-## Pre-Processing
+### Missing Dates
+
+```python
+martha.missingDates(data, freq, format, returnType)
+```
+Missing Dates are not always easy to spot in a dataset with a number of dates. This function will date the data you pass and generate a series of complete dates using a period, and format that you specify. It will then match these dates with the ones provided and highlight any missing dates.
