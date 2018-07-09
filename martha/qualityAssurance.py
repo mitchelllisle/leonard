@@ -107,7 +107,7 @@ def missingDates(data, freq = "D", format = '%Y-%m-%d', returnType = "viz"):
                           range=['#B8E986', '#F15545'])
 
         if returnType == 'viz':
-            barSize = (1000 / len(computedRange)) - 2
+            barSize = (800 / len(computedRange)) - 2
             padding = (barSize / 2) + 1
 
             results = alt.Chart(
