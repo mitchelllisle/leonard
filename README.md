@@ -38,7 +38,7 @@ Suppose you have a dataset that looks like the following:
 
 Running 
 ```python
-martha.distribution(movies['Movie'])
+martha.distribution(movies['Distributor'])
 ```
 Would give you:
 ```
