@@ -4,10 +4,14 @@ from martha import normalise
 from martha import labelEncoder
 from martha import cleanUpString
 from martha import medianFrequency
+from martha import gini
 import numpy as np
 import pandas as pd
 import json
 from sklearn.preprocessing import LabelEncoder
+
+# import os
+# os.chdir("/Users/mitchell/Documents/projects/martha")
 
 def test_negabs():
     data = pd.read_csv("data/marvelMovies.csv")
@@ -38,3 +42,7 @@ def test_medianFrequency():
     repeats = pd.Series(data['repeats'])
     computedMedian = medianFrequency(values, repeats)
     assert computedMedian == 2
+
+def test_gini():
+    data = pd.read_csv("data/fifaAbilities.csv")
+    assert gini(data['marking']) == 0.3441157017683561
