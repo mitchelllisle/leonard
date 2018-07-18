@@ -38,14 +38,13 @@ Suppose you have a dataset that looks like the following:
 
 Running 
 ```python
-martha.distribution(movies['Movie'])
+martha.distribution(movies['Distributor'])
 ```
 Would give you:
 ```
                            occurences	percent
-Raiders of the Lost Ark	   1	2.10    %33.33
-Back to the Future         1	2.10    %33.33
-Star Wars: A New Hope      1	2.10	  %33.33
+Lucasfilm                  2          %66.66
+Amblin Entertainment   	   1	        %33.33
 ```
 
 
