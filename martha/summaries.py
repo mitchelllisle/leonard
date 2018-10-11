@@ -2,8 +2,13 @@ import pandas as pd
 import sys
 import hurry.filesize
 from collections import Counter
+import napoleon as nl
 
-def distribution(column):
+# import os
+# os.chdir("/Users/mitchell/Documents/projects/packages/martha")
+# data = pd.read_csv("data/fifaAbilities.csv")
+
+def distribution(column, returnType = "data"):
     '''
     Distribution of data based off Categories in column
 
@@ -13,14 +18,18 @@ def distribution(column):
     ------
     PARAMS
     ------
-    data : that contains the column you're interested in checking
     column : the column to run distribution checks
+    returnType : "viz" will return a chart, "data" will return a dataframe
     '''
     totalValues = column.count()
     dist = pd.DataFrame(pd.Series(Counter(column), name = "occurences"))
     dist = dist.assign(percent = round(dist.occurences / totalValues * 100, 2))
-    dist = dist.sort_values("percent", ascending = False)
-    return dist
+    dist = dist.sort_values("percent", ascending = False).reset_index()
+    if returnType == "viz":
+        chart = nl.bar(dist, "index", "occurences", height = 100, width = 400)
+        return chart
+    elif returnType == "data":
+        return dist
 
 def IQR(column):
     '''
