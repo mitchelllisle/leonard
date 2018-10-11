@@ -9,4 +9,4 @@ hurry.filesize
 sklearn
 scipy
 altair
-napoleon
+git+git://github.com/mitchelllisle/napoleon.git#egg=napoleon
