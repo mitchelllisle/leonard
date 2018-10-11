@@ -16,8 +16,7 @@ import json
 def test_distribution():
     values = pd.DataFrame(pd.Series(["Orange","Apple","Banana","Orange","Banana","Banana","Banana","Grapes","Apple","Banana","Apple"]), columns = ["Fruits"])
     distResult = distribution(values["Fruits"])
-    topFruit = distResult.iloc[0]
-    topFruit = topFruit.name
+    topFruit = distResult['index'][0]
     assert topFruit == 'Banana'
 
 def test_IQR():
