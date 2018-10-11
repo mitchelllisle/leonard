@@ -9,3 +9,4 @@ hurry.filesize
 sklearn
 scipy
 altair
+napoleon
