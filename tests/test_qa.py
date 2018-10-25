@@ -1,6 +1,7 @@
 import pytest
 from martha import missingDates
 from martha import numericHistograms
+from martha import showNullColumns
 try:
     import altair as alt
 except ImportError:
@@ -25,3 +26,8 @@ def test_numericColumns():
     data  = pd.read_csv("data/fifaAbilities.csv")
     charts = numericHistograms(data)
     assert type(charts) == alt.RepeatChart
+
+def test_showNullColumns():
+    data = pd.read_csv("data/marvelMovies.csv")
+    result = showNullColumns(data)
+    assert len(result) == 1

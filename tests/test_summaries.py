@@ -3,7 +3,6 @@ from martha import distribution
 from martha import IQR
 from martha import columnStats
 from martha import summary
-from martha import showNullColumns
 try:
     import altair as alt
 except ImportError:
@@ -41,10 +40,3 @@ def test_summary():
     result = summary(data)
 
     assert len(result) == 7
-
-def test_showNullColumns():
-    data = pd.read_csv("data/marvelMovies.csv")
-
-    result = showNullColumns(data)
-
-    assert len(result) == 1
