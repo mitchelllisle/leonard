@@ -141,17 +141,3 @@ def summary(data):
     for stat in stats:
         allStats = allStats.append(stat)
     return allStats
-
-def showNullColumns(data, threshold = 0):
-    '''
-    showNullColumns
-    This will return all the columns in a dataset that have nulls passed
-    a given threshold.
-    ------
-    PARAMS
-    ------
-    data : that contains the column you're interested in checking
-    threshold : Return all columsn with null counts greater than this value. Default is 0.
-    '''
-    nullColumns = pd.DataFrame(data.isnull().sum()[data.isnull().sum() > threshold])
-    return nullColumns

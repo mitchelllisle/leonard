@@ -2,7 +2,8 @@ from .summaries import distribution
 from .summaries import IQR
 from .summaries import columnStats
 from .summaries import summary
-from .summaries import showNullColumns
+from .qualityAssurance import showNullColumns
+from .qualityAssurance import showNullRows
 from .qualityAssurance import numericHistograms
 from .qualityAssurance import missingDates
 from .preProcessing import negabs
