@@ -8,7 +8,7 @@ except ImportError:
     warnings.warn("Altair is not installed. Chart functions won't work")
 
 def showNullRows(data, column):
-    return data[[column].isnull()]
+    return data[[column]].isnull()]
 
 def showNullColumns(data, threshold = 0):
     '''
