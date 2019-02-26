@@ -14,7 +14,8 @@ pip install --upgrade git+https://github.com/mitchelllisle/martha
 ```
 
 # What is Martha?
-Martha is a python package that aims to assit in both an exploratory data analysis context as well as a productionised python project. There are a few main areas that Martha aims to assist with:
+NOTE: This is currently a prototype library
+Martha is a python package that aims to assit in both an exploratory data analysis context as well as a productionised python project. The main aim of Martha is to assist in Quality Assurance. There are a few main areas that Martha aims to assist with:
 
 ## Summaries ☀️
 Often times I find myself needing to get some information about a dataset before diving into an analysis. Although there are some great existing tools within Pandas and other packages, I couldn't find something that quite tells me all the information I needed. Summaries are meant to help bridge this gap.
